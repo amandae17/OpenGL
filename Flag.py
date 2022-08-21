@@ -8,10 +8,12 @@ def Desenha():
 
     glMatrixMode(GL_MODELVIEW)
     
-#DesenhaTriangulo do meio
+#Define cor da estrela
     glLoadIdentity()
     glClear(GL_COLOR_BUFFER_BIT)
     glColor3f(0.0, 0.0, 255.0)
+
+#### --- Começo da estrela
 
     glBegin(GL_TRIANGLES)
     glVertex2f(-0.25, 0.0)
@@ -46,6 +48,8 @@ def Desenha():
     glEnd()
     glFlush()
 
+####  --- Final da estrela
+
 # Desenha Triangulo Vermelho de cima
 
 #    glLoadIdentity()
@@ -63,7 +67,7 @@ def Desenha():
     glBegin(GL_TRIANGLES)
     glVertex2f(-1.0, 0.2)
     glVertex2f(-1.0, -1.0)
-    glVertex2f(0.7, -1.0)
+    glVertex2f(0.6, -1.0)
     glEnd()
     glFlush()
 
