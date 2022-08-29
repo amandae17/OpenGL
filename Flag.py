@@ -20,7 +20,6 @@ def Desenha():
     glVertex2f(0.25, 0.0)
     glVertex2f(0.0, -0.2)
     glEnd()
-    glFlush()
 
 #DesenhaTriangulo de cima
 
@@ -29,7 +28,6 @@ def Desenha():
     glVertex2f(-0.08, 0.0)
     glVertex2f(0.0, 0.25)
     glEnd()
-    glFlush()
 
 #Desenha Triangulo de baixo -- esquerda
     glBegin(GL_TRIANGLES)
@@ -37,7 +35,6 @@ def Desenha():
     glVertex2f(-0.17, -0.4)
     glVertex2f(-0.08, -0.06)
     glEnd()
-    glFlush()
 
 #Desenha Triangulo de baixo -- direita
 
@@ -46,21 +43,18 @@ def Desenha():
     glVertex2f(0.17, -0.4)
     glVertex2f(0.08, -0.06)
     glEnd()
-    glFlush()
 
 ####  --- Final da estrela
 
 # Desenha Triangulo Vermelho de cima
 
-#    glLoadIdentity()
     glBegin(GL_TRIANGLES)
-#    glClear(GL_COLOR_BUFFER_BIT)
     glColor3f(255.0, 0.0, 0.0)
     glVertex2f(-0.8, 1.0)
     glVertex2f(1.0, 1.0)
     glVertex2f(1.0, -0.5)
     glEnd()
-    glFlush()
+
 
 
 # Desenha Triangulo Vermelho de baixo
@@ -79,9 +73,6 @@ def main():
     glutInitWindowSize(500,300)
     glutCreateWindow(b'Bandeira')
     glutDisplayFunc(Desenha)
-#    glutDisplayFunc(DesenhaTriangulo)
-#    glutDisplayFunc(DesenhaTriangulo2)
-#    glutDisplayFunc(TeladeFundo)
     glutMainLoop()
 
 main()
