@@ -4,13 +4,23 @@ from OpenGL.GLUT import *
 import sys
 
 def Desenha():
-    glClearColor(1.0, 1.0, 1.0, 1.0) # Define o fundo branco
+    glClearColor(0.0, 0.0, 0.0, 0.0) # Define o fundo branco
 
     glMatrixMode(GL_MODELVIEW)
     
 #Define cor da estrela
     glLoadIdentity()
     glClear(GL_COLOR_BUFFER_BIT)
+
+    glColor3f(255.0,255.0,255.0)
+    glBegin(GL_POLYGON)
+    glVertex2f(10.0,10.0)
+    glVertex2f(-10.0,10.0)
+    glVertex2f(-10.0,-10.0)
+    glVertex2f(10.0,-10.0)
+    glEnd()
+
+    
     glColor3f(0.0, 0.0, 255.0)
 
 #### --- Começo da estrela
@@ -65,10 +75,21 @@ def Desenha():
     glEnd()
     glFlush()
 
+def AlterandoTamanhoJanela(w,h):
+    if( h==0):
+        h = 15
+    
+    glViewport(0,0,w,h)
+    glMatrixMode(GL_PROJECTION)
+    glLoadIdentity()
+    print(w,h, "\n")
+    gluOrtho2D(0.0, 100.0, 100.0, 0.0)
+
 
 #// Programa Principal 
 def main():
     glutInit(sys.argv)
+    glutReshapeFunc(AlterandoTamanhoJanela)
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB)
     glutInitWindowSize(500,300)
     glutCreateWindow(b'Bandeira')
