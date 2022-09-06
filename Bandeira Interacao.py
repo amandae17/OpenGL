@@ -139,6 +139,8 @@ def GerenciaMouse(button, state, x, y):
 
 #// Função callback chamada para gerenciar eventos do teclado   
 #// para teclas especiais, tais como F1, PgDn e Home
+
+## ARRUMARRR!!!!!
 def TeclasEspeciais(key, x, y):
     global x1, y1, win, view_w, view_h
     if(key == GLUT_KEY_UP):
@@ -158,7 +160,7 @@ def TeclasEspeciais(key, x, y):
             
     if(key == GLUT_KEY_RIGHT):
         x1=x1+0.1
-        if (x1+0.2>view_w):
+        if (x1+0.2>view_w-0.3):
             x1=view_w-0.2
 
     glutPostRedisplay()
@@ -167,7 +169,7 @@ def TeclasEspeciais(key, x, y):
 def main():
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB)
-    glutInitWindowSize(500,250)
+    glutInitWindowSize(300,150)
     glutInitWindowPosition(10,10)
     glutCreateWindow(b"Interacao")
     glutDisplayFunc(Desenha)

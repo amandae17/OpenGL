@@ -3,18 +3,18 @@ from OpenGL.GLU import *
 from OpenGL.GLUT import *
 import sys
 
-global windowWidth,windowHeight,x1,y1,xstep,ystep
+global windowWidth,windowHeight,xf,yf,xstep,ystep
 windowWidth = 100
 windowHeight = 50
 
-x1 = 0.0
-y1 = 0.0
+xf = 0.0
+yf = 0.0
 
 xstep = 0.01
 ystep = 0.01
 
 def Desenha():
-    global windowWidth,windowHeight,x1,y1,xstep,ystep
+    global windowWidth,windowHeight,xf,yf,xstep,ystep
     
     glClearColor(0.0, 0.0, 0.0, 0.0) # Define o fundo preto
 
@@ -25,10 +25,10 @@ def Desenha():
     glClear(GL_COLOR_BUFFER_BIT)
     glBegin(GL_POLYGON)
     glColor3f(255.0,255.0,255.0)
-    glVertex2f(-0.3+x1, 0.3+y1)
-    glVertex2f(-0.3+x1, -0.3+y1)
-    glVertex2f(0.3+x1, -0.3+y1)
-    glVertex2f(0.3+x1, 0.3+y1)
+    glVertex2f(-0.3+xf, 0.3+yf)
+    glVertex2f(-0.3+xf, -0.3+yf)
+    glVertex2f(0.3+xf, -0.3+yf)
+    glVertex2f(0.3+xf, 0.3+yf)
     glEnd()
 
 #Define cor da estrela
@@ -37,32 +37,32 @@ def Desenha():
 #### --- Começo da estrela
 
     glBegin(GL_TRIANGLES)
-    glVertex2f(-0.08+x1, 0.0+y1)
-    glVertex2f(0.0+x1, -0.08+y1)
-    glVertex2f(0.08+x1, 0.0+y1)
+    glVertex2f(-0.08+xf, 0.0+yf)
+    glVertex2f(0.0+xf, -0.08+yf)
+    glVertex2f(0.08+xf, 0.0+yf)
     glEnd()
 
 #DesenhaTriangulo de cima
 
     glBegin(GL_TRIANGLES)
-    glVertex2f(-0.03+x1, 0.0+y1)
-    glVertex2f(0.03+x1, 0.0+y1)
-    glVertex2f(0.0+x1, 0.06+y1)
+    glVertex2f(-0.03+xf, 0.0+yf)
+    glVertex2f(0.03+xf, 0.0+yf)
+    glVertex2f(0.0+xf, 0.06+yf)
     glEnd()
 
 #Desenha Triangulo de baixo -- esquerda
     glBegin(GL_TRIANGLES)
-    glVertex2f(0.0+x1, -0.08+y1)
-    glVertex2f(-0.05+x1, -0.13+y1)
-    glVertex2f(-0.03+x1, -0.01+y1)
+    glVertex2f(0.0+xf, -0.08+yf)
+    glVertex2f(-0.05+xf, -0.13+yf)
+    glVertex2f(-0.03+xf, -0.01+yf)
     glEnd()
 
 #Desenha Triangulo de baixo -- direita
 
     glBegin(GL_TRIANGLES)
-    glVertex2f(0.0+x1, -0.08+y1)
-    glVertex2f(0.05+x1, -0.13+y1)
-    glVertex2f(0.03+x1, -0.01+y1)
+    glVertex2f(0.0+xf, -0.08+yf)
+    glVertex2f(0.05+xf, -0.13+yf)
+    glVertex2f(0.03+xf, -0.01+yf)
     glEnd()
 
 ####  --- Final da estrela
@@ -71,38 +71,38 @@ def Desenha():
 
     glBegin(GL_TRIANGLES)
     glColor3f(255.0, 0.0, 0.0)
-    glVertex2f(-0.2+x1, 0.3+y1)
-    glVertex2f(0.3+x1, 0.3+y1)
-    glVertex2f(0.3+x1, -0.1+y1)
+    glVertex2f(-0.2+xf, 0.3+yf)
+    glVertex2f(0.3+xf, 0.3+yf)
+    glVertex2f(0.3+xf, -0.1+yf)
     glEnd()
 
 
 
 # Desenha Triangulo Vermelho de baixo
     glBegin(GL_TRIANGLES)
-    glVertex2f(-0.3+x1, 0.0+y1)
-    glVertex2f(-0.3+x1, -0.3+y1)
-    glVertex2f(0.2+x1, -0.3+y1)
+    glVertex2f(-0.3+xf, 0.0+yf)
+    glVertex2f(-0.3+xf, -0.3+yf)
+    glVertex2f(0.2+xf, -0.3+yf)
     glEnd()
     glutSwapBuffers()
 
 def Timer(value):
-    global windowWidth,WindowHeight,x1,y1,xstep,ystep
-    if(x1 > windowWidth or x1 <0):
+    global windowWidth,WindowHeight,xf,yf,xstep,ystep
+    if(xf > windowWidth or xf <0):
         xstep = -xstep
 
-    if(y1 > windowWidth or y1 <0):
+    if(yf > windowWidth or yf <0):
         ystep = -ystep
 
-    if(x1 > windowWidth):
-        x1 = windowWidth-1
+    if(xf > windowWidth):
+        xf = windowWidth-0.1
 
-    if(y1 > windowHeight):
-        y1 = windowHeight-1
+    if(yf > windowHeight):
+        yf = windowHeight-0.1
 
 
-    x1 += xstep
-    y1 += ystep
+    xf += xstep
+    yf += ystep
 
     glutPostRedisplay()
     glutTimerFunc(33,Timer, 1)
@@ -111,7 +111,7 @@ def Inicializa():
     glClearColor(0.0,0.0,0.0,1.0)
 
 def AlterandoTamanhoJanela(w,h):
-    global windowWidth,WindowHeight,x1,y1,xstep,ystep
+    global windowWidth,WindowHeight,xf,yf,xstep,ystep
     if( h==0):
         h = 1
     
@@ -132,7 +132,7 @@ def AlterandoTamanhoJanela(w,h):
 def main():
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(100,50);
+    glutInitWindowSize(300,150);
     glutInitWindowPosition(10,10);
     glutCreateWindow(b"Anima");
     glutDisplayFunc(Desenha);
