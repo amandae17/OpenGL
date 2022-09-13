@@ -78,9 +78,9 @@ def Desenha():
 
 # Desenha Triangulo Vermelho de baixo
     glBegin(GL_TRIANGLES)
-    glVertex2f(-0.3+x1, 0.0+y1)
+    glVertex2f(-0.3+x1, 0.06+y1)
     glVertex2f(-0.3+x1, -0.3+y1)
-    glVertex2f(0.2+x1, -0.3+y1)
+    glVertex2f(0.18+x1, -0.3+y1)
     glEnd()
     glutSwapBuffers()
 
@@ -144,24 +144,24 @@ def GerenciaMouse(button, state, x, y):
 def TeclasEspeciais(key, x, y):
     global x1, y1, win, view_w, view_h
     if(key == GLUT_KEY_UP):
-        y1=y1+0.1
-        if (y1+0.2>view_h):
-            y1=view_h-0.2
+        y1=y1+0.3
+        if (y1+0.4>view_h):
+            y1=view_h-0.3
             
     if(key == GLUT_KEY_DOWN):
-        y1=y1-0.1
+        y1=y1-0.4
         if (y1<0):
-            y1=0
+            y1=0.28
             
     if(key == GLUT_KEY_LEFT):
-        x1=x1-0.1
+        x1=x1-0.3
         if (x1<0):
-            x1=0
+            x1=0.28
             
     if(key == GLUT_KEY_RIGHT):
-        x1=x1+0.1
+        x1=x1+0.3
         if (x1+0.2>view_w-0.3):
-            x1=view_w-0.2
+            x1=view_w-0.3
 
     glutPostRedisplay()
 

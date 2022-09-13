@@ -7,8 +7,8 @@ global windowWidth,windowHeight,xf,yf,xstep,ystep
 windowWidth = 100
 windowHeight = 50
 
-xf = 0.0
-yf = 0.0
+xf = 0.3
+yf = 0.3
 
 xstep = 0.01
 ystep = 0.01
@@ -95,10 +95,10 @@ def Timer(value):
         ystep = -ystep
 
     if(xf > windowWidth):
-        xf = windowWidth-0.1
+        xf = windowWidth-0.6
 
     if(yf > windowHeight):
-        yf = windowHeight-0.1
+        yf = windowHeight-0.6
 
 
     xf += xstep
@@ -132,7 +132,7 @@ def AlterandoTamanhoJanela(w,h):
 def main():
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(300,150);
+    glutInitWindowSize(700,350);
     glutInitWindowPosition(10,10);
     glutCreateWindow(b"Anima");
     glutDisplayFunc(Desenha);
