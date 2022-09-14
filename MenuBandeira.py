@@ -28,11 +28,11 @@ def alteraTamanhoJanela(w,h):
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
     if(w <= h):
-      windowHeight = 250*h/w
-      windowWidth = 250.0
+      windowHeight = 4.0*h/w
+      windowWidth = 4.0
     else:
-      windowHeight = 250.0*w/h
-      windowWidth = 250.0
+      windowWidth = 4.0*w/h
+      windowHeight = 4.0
     
     #gluOrtho2D(0,windowWidth,windowHeight,0)
     gluOrtho2D (-win, win, win, -win)

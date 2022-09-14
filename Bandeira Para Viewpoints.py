@@ -7,10 +7,10 @@ global wo,ho,windowWidth,windowHeight,x1,y1,xstep,ystep,x2,y2,win
 
 x1 = 0
 y1 = 0
-x2 = 30
-y2 = 30
-xstep = 100
-ystep = 100
+x2 = 0
+y2 = 0
+xstep = 1.0
+ystep = 1.0
 
 #Funcao callback chamada para fazer o desenho
 def Desenha():
@@ -28,13 +28,13 @@ def Desenha():
     else:
         windowWidth = 300*wo/ho
         windowHeight = 350
-    gluOrtho2D(0.0, windowWidth, windowHeight, 0.0);
+    gluOrtho2D(0.0, windowWidth, 0.0, windowHeight);
 
     # Desenha Poligono branco
     glBegin(GL_POLYGON)
     glColor3f(255.0,255.0,255.0)
-    glVertex2f(-30+x1, 30+y1)
-    glVertex2f(-30+x1, -30+y1)
+    glVertex2f(-40+x1, 30+y1)
+    glVertex2f(-40+x1, -30+y1)
     glVertex2f(40+x1, -30+y1)
     glVertex2f(40+x1,30+y1)
     glEnd()
@@ -80,18 +80,16 @@ def Desenha():
 
     glBegin(GL_TRIANGLES)
     glColor3f(255.0, 0.0, 0.0)
-    glVertex2f(40+x1, 30+y1)
-    glVertex2f(-30+x1, 30+y1)
-    glVertex2f(-30+x1, -10+y1)
+    glVertex2f(-40+x1, 0.0+y1)
+    glVertex2f(-40+x1, -30+y1)
+    glVertex2f(20+x1, -30+y1)
     glEnd()
-
-
 
 # Desenha Triangulo Vermelho de cima
     glBegin(GL_TRIANGLES)
-    glVertex2f(40+x1, 0.0+y1)
-    glVertex2f(40+x1, -30+y1)
-    glVertex2f(-20+x1, -30+y1)
+    glVertex2f(40+x1, 5+y1)
+    glVertex2f(40+x1, 30+y1)
+    glVertex2f(-20+x1, 30+y1)
     glEnd()
     glutSwapBuffers()
 
@@ -103,14 +101,14 @@ def Desenha():
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
      
-    gluOrtho2D(0.0, windowWidth, windowHeight, 0.0);
+    gluOrtho2D(0.0, windowWidth, 0.0, windowHeight);
     
     # Desenha Poligono branco
     glClear(GL_COLOR_BUFFER_BIT)
     glBegin(GL_POLYGON)
     glColor3f(255.0,255.0,255.0)
-    glVertex2f(-30+x2, 30+y2)
-    glVertex2f(-30+x2, -30+y2)
+    glVertex2f(-40+x2, 30+y2)
+    glVertex2f(-40+x2, -30+y2)
     glVertex2f(40+x2, -30+y2)
     glVertex2f(40+x2,30+y2)
     glEnd()
@@ -155,9 +153,9 @@ def Desenha():
 
     glBegin(GL_TRIANGLES)
     glColor3f(255.0, 0.0, 0.0)
-    glVertex2f(40+x2, 30+y2)
-    glVertex2f(-30+x2, 30+y2)
-    glVertex2f(-30+x2, -10+y2)
+    glVertex2f(-40+x2, 5+y2)
+    glVertex2f(-40+x2, -30+y2)
+    glVertex2f(20+x2, -30+y2)
     glEnd()
 
 
@@ -165,8 +163,8 @@ def Desenha():
 # Desenha Triangulo Vermelho de cima
     glBegin(GL_TRIANGLES)
     glVertex2f(40+x2, 0.0+y2)
-    glVertex2f(40+x2, -30+y2)
-    glVertex2f(-20+x2, -30+y2)
+    glVertex2f(40+x2, 30+y2)
+    glVertex2f(-20+x2, 30+y2)
     glEnd()
     glutSwapBuffers()
 
@@ -189,9 +187,9 @@ def Timer(value):
 
   if(y1 > windowHeight-30 or y1 < 0): ystep = -ystep
 
-  if(x1 > windowWidth+40): x1 = windowWidth-40-1
+  if(x1 > windowWidth+40): x1 = windowWidth
   
-  if(y1 > windowHeight+30): y1 = windowHeight-30-1
+  if(y1 > windowHeight+30): y1 = windowHeight
 
   x1 += xstep
   y1 += ystep
@@ -214,11 +212,11 @@ def GerenciaMouse(button, state, x, y):
          if (state == GLUT_DOWN):
                   # Troca o tamanho do retângulo, que vai do centro da 
                   # janela até a posição onde o usuário clicou com o mouse
-                  escalax = (300)/(wo);
+                  escalax = (400)/(wo);
 
                   x2 = (x-wo/2)*escalax;
 
-                  escalay= 300/(ho);
+                  escalay= 400/(ho);
 
                   y2 = y*escalay;
     glutPostRedisplay()
@@ -226,11 +224,11 @@ def GerenciaMouse(button, state, x, y):
 def TeclasEspeciais(key, x, y):
     global x2, y2,win
     if(key == GLUT_KEY_UP):
-           y2=y2-3           
-           if (y2<30): y2=30
+           y2=y2+3           
+           if (y2>310): y2=310
     if(key == GLUT_KEY_DOWN):
-           y2=y2+3
-           if (y2>375): y2=375
+           y2=y2-3
+           if (y2<30): y2=30
 
     if(key == GLUT_KEY_LEFT):
            x2=x2-3
