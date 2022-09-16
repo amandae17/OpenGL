@@ -5,10 +5,10 @@ import sys
 
 global wo,ho,windowWidth,windowHeight,x1,y1,xstep,ystep,x2,y2,win
 
-x1 = 0
-y1 = 0
-x2 = 0
-y2 = 0
+x1 = 140
+y1 = 310
+x2 = 140
+y2 = 310
 xstep = 1.0
 ystep = 1.0
 
@@ -91,7 +91,6 @@ def Desenha():
     glVertex2f(40+x1, 30+y1)
     glVertex2f(-20+x1, 30+y1)
     glEnd()
-    glutSwapBuffers()
 
 # ///  //Segunda View port
 
@@ -104,7 +103,7 @@ def Desenha():
     gluOrtho2D(0.0, windowWidth, 0.0, windowHeight);
     
     # Desenha Poligono branco
-    glClear(GL_COLOR_BUFFER_BIT)
+    #glClear(GL_COLOR_BUFFER_BIT)
     glBegin(GL_POLYGON)
     glColor3f(255.0,255.0,255.0)
     glVertex2f(-40+x2, 30+y2)
@@ -224,7 +223,7 @@ def GerenciaMouse(button, state, x, y):
 def TeclasEspeciais(key, x, y):
     global x2, y2,win
     if(key == GLUT_KEY_UP):
-           y2=y2+3           
+           y2=y2+5           
            if (y2>310): y2=310
     if(key == GLUT_KEY_DOWN):
            y2=y2-3
@@ -232,11 +231,11 @@ def TeclasEspeciais(key, x, y):
 
     if(key == GLUT_KEY_LEFT):
            x2=x2-3
-           if (x2-40<0): x2=x2+4
+           if (x2-40<0): x2=x2+3
            
     if(key == GLUT_KEY_RIGHT):
            x2=x2+3
-           if (x2+40>win): x2=win-40
+           if (x2+30>win): x2=win-30
 
     glutPostRedisplay()
     
@@ -244,7 +243,7 @@ def TeclasEspeciais(key, x, y):
 def main():
      glutInit(sys.argv)
      glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-     glutInitWindowSize(400,450);
+     glutInitWindowSize(500,400);
      glutInitWindowPosition(10,10);
      glutCreateWindow(b"Para Multiplas ViewPorts");
      glutDisplayFunc(Desenha);
