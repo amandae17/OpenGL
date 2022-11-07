@@ -1,8 +1,8 @@
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
-global windowWidth,windowHeight,x1,y1,win,view_w, view_h,texto,r,g,b,r1,g1,b1,r2,g2,b2,r3,g3,b3,r4,g4,b4
-global teclasHabilitadas
+import sys
+global windowWidth,windowHeight,x1,y1,win,view_w, view_h,texto,r,g,b,r1,g1,b1,r2,g2,b2,r3,g3,b3,r4,g4,b4,teclasHabilitadas
 teclasHabilitadas = False
 x1 = 0
 y1 = 0 
